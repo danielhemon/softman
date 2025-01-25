@@ -1,0 +1,99 @@
+<div class="row login-container">
+  <div class="col">
+    <div class="row image">
+      <img src="assets/images/logo.jpeg" alt="Logo" width="100" height="auto" />
+    </div>
+
+    <div class="row title">
+      <h2>Login</h2>
+    </div>
+
+    <div class="row form">
+      <div class="col">
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <label for="tipoDocumento">Tipo de documento:</label>
+          <select id="tipoDocumento" formControlName="tipoDocumento">
+            <option value="Cédula de Ciudadanía">Cédula de Ciudadanía</option>
+          </select>
+
+          <label for="usuario">Usuario:</label>
+          <input
+            type="text"
+            id="usuario"
+            placeholder="Ingresa tu usuario"
+            formControlName="usuario"
+          />
+          <label
+            class="error-msg"
+            *ngIf="getCtrlErr('usuario', 'required') && showValiadtions"
+          >
+            Campo requerido.
+          </label>
+          <label
+            class="error-msg"
+            *ngIf="getCtrlErr('usuario', 'minlength') && showValiadtions"
+          >
+            Debe contener minimo 3 caracteres.
+          </label>
+
+          <label for="contrasena">Contraseña:</label>
+          <input
+            type="password"
+            id="contrasena"
+            placeholder="Ingresa tu contraseña"
+            formControlName="contrasena"
+          />
+          <label
+            class="error-msg"
+            *ngIf="getCtrlErr('contrasena', 'required') && showValiadtions"
+          >
+            Campo requerido.
+          </label>
+          <label
+            class="error-msg"
+            *ngIf="getCtrlErr('contrasena', 'minlength') && showValiadtions"
+          >
+            Debe contener minimo 6 caracteres.
+          </label>
+
+          <label class="error-msg" *ngIf="hasErrors && showValiadtions">
+            Errores de validacion en el formulario.
+          </label>
+
+          <label class="error-msg" *ngIf="succesLogin && showValiadtions">
+            Usuario y/o Contraseńa incorrectos.
+          </label>
+
+          <button type="submit">LOGIN</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row links">
+      <div class="col">
+        <a>¿Olvidaste tu contraseña?</a>
+      </div>
+      <div class="col">
+        <a>Crear una cuenta</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <label class="disclaimer">
+        Recuerde que este portal es sólo para consultar los resultados de sus
+        estudios.
+        <strong>Teléfono información: (02) 394-9290 / 0991489857.</strong>
+      </label>
+    </div>
+
+    <div class="row copy-row">
+      <label class="copy"> Diseñado por Softman S.A.S. - Colombia. </label>
+      <img
+        src="assets/images/logo-lumier-1.svg"
+        alt="Logo Lumier"
+        width="25"
+        height="auto"
+      />
+    </div>
+  </div>
+</div>

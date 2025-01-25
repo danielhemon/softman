@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col container">
+    <div class="table-container">
+      <div class="title">
+        <div class="col text">
+          <span>CONSULTA HISTORIAL ESTUDIO - PACIENTE</span>
+        </div>
+        <div class="actions">
+          <img
+            class="icon"
+            src="assets/icons/search.svg"
+            alt="search"
+            width="20"
+            height="20"
+            height="auto"
+            (click)="toggleSearch()"
+          />
+          <img
+            class="icon"
+            src="assets/icons/filter.svg"
+            alt="filter"
+            width="20"
+            height="20"
+            height="auto"
+            (click)="toggleFilter()"
+          />
+        </div>
+      </div>
+
+      <div class="search" *ngIf="showSearch">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Buscar por nombre..."
+        />
+        <img
+          class="search-icon"
+          src="assets/icons/search.svg"
+          alt="search"
+          width="24"
+          height="24"
+          height="auto"
+        />
+      </div>
+
+      <div class="filters" *ngIf="showFilter">
+        <div class="date-container">
+          <div>
+            <label class="label" for="start-date">Desde:</label>
+            <input type="date" id="start-date" class="date-input" />
+            
+          </div>
+          <div>
+            <label class="label" for="end-date">Hasta:</label>
+            <input type="date" id="end-date" class="date-input" />
+          </div>
+        </div>
+      </div>
+
+      <table class="custom-table">
+        <thead class="thead">
+          <tr class="headers">
+            <th><input type="checkbox" /></th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Nombre Paciente</th>
+            <th>Modalidad Examen</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let record of paginatedRecords">
+            <td><input type="checkbox" /></td>
+            <td>{{ record.id }}</td>
+            <td>{{ record.nombre }}</td>
+            <td>{{ record.nombrePaciente }}</td>
+            <td>{{ record.modalidadExamen }}</td>
+            <td>{{ record.estado }}</td>
+            <td class="actions">
+              <img
+                class="icon"
+                src="assets/icons/print.svg"
+                alt="print"
+                width="20"
+                height="20"
+                height="auto"
+              />
+              <img
+                class="icon"
+                src="assets/icons/eye.svg"
+                alt="eye"
+                width="20"
+                height="20"
+                height="auto"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <span>1 - {{ pageSize }} de {{ this.records.length }}</span>
+        <img
+          class="icon"
+          src="assets/icons/arrow_back.svg"
+          alt="arrow_back"
+          width="20"
+          height="20"
+          height="auto"
+          (click)="previousPage()"
+        />
+        <span>Página {{ currentPage }}/2</span>
+        <img
+          class="icon"
+          src="assets/icons/arrow_forward.svg"
+          alt="arrow_forward"
+          width="20"
+          height="20"
+          height="auto"
+          (click)="nextPage()"
+        />
+      </div>
+    </div>
+  </div>
+</div>
